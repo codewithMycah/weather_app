@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center text-center space-y-[24px]">
+    <img class="w-[42px]" src="{{ url_for('static', filename='./images/icon-error.svg')}}" alt="units">
+    <h3 class="text-preset2">Something went wrong</h3>
+    <p class="md:max-w-[554px] text-neutral-200 text-preset5-med">We couldn’t connect to the server (API error). Please try again in a few moments.</p>
+    <div class="bg-neutral-800 inline-block rounded-md py-2 px-4">
+        <div class="flex items-center justify-between gap-2">
+            <img src="{{ url_for('static', filename='./images/icon-retry.svg')}}" alt="units">
+            Retry
+        </div>
+    </div>
+</div>
+{% endblock %}s

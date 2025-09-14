@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/styles.css') }}">
+    <title>Weather App</title>
+</head>
+<body class="bg-[#02012C] text-white h-screen">
+    <div class="max-w-7xl mx-auto px-[16px] pt-[24px] pb-[80px] sm:px-[24px] lg:px-8">
+        <!-- Navbar -->
+        <nav>
+            <div class="h-[43px] mb-[16px] md:mb-[64px]">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0">
+                        <a href="#"><img src="{{ url_for('static', filename='./images/logo.svg')}}" alt="logo"></a>
+                    </div>
+                    <div class="bg-[#262540] rounded-md py-2 px-4">
+                        <div class="flex items-center justify-between gap-2">
+                            <img src="{{ url_for('static', filename='./images/icon-units.svg')}}" alt="units">
+                            Units
+                            <img src="{{ url_for('static', filename='./images/icon-dropdown.svg')}}" alt="units">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center space-y-[24px]">
+    <h3 class="text-preset2">How’s the sky looking today?</h3>
+
+    <div>
+        <form class="grid grid-cols-1 gap-[12px] md:grid-cols-[4fr_1fr] lg:max-w-[656px] items-center justify-center mx-auto md:space-x-[16px]">   
+            <label for="simple-search" class="sr-only">Search</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none">
+                    <img src="{{ url_for('static', filename='./images/icon-search.svg') }}" alt="">
+                </div>
+                <input type="text" id="simple-search" class="w-full bg-[#262540] text-preset5-med rounded-lg focus:ring-blue-500 focus:border-blue-500 ps-12 px-[24px] py-[16px]" placeholder="Search for a place..." required />
+            </div>
+            <button type="submit" class="px-[24px] py-[16px] text-sm bg-[#4658D9] rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                <span class="text-preset5-med">Search</span>
+            </button>
+        </form>
+    </div>
+
+    <div class="text-start grid grid-cols-1 lg:grid-cols-[2fr_1fr] grid-rows-1 gap-[32px]">
+        <div class="grid grid-cols-1 auto-rows-min gap-[32px] lg:gap-[50px] *:rounded-[20px]">
+            <div class="min-h-[286px] bg-cover bg-center
+                    bg-[url('{{ url_for('static', filename='./images/bg-today-small.svg')}}')]
+                    lg:bg-[url('{{ url_for('static', filename='./images/bg-today-large.svg')}}')] px-[24px] py-[80px]">
+                <div class="flex flex-col text-center md:flex-row items-center justify-between space-y-[12px]">
+                    <div class="space-y-[12px]">
+                        <h3 class="text-preset4">Berlin, Germany</h3>
+                        <span class="text-preset6">Tuesday, Aug 5, 2025</span>
+                    </div>
+                    <div class="flex flex-row items-center justify-center">
+                        <img class="w-[120px]" src="{{ url_for('static', filename='./images/icon-sunny.webp') }}" alt="">
+                        <h1 class="text-preset1">20</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="self-start">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-[24px] *:bg-[#262540] *:p-[20px] *:rounded-[20px]">
+                    <div class="space-y-[24px]">
+                        <p class="text-preset6">Feels Like</p>
+                        <span class="text-preset3">test</span>
+                    </div>
+                    <div class="space-y-[24px]">
+                        <p class="text-preset6">Humidity</p>
+                        <span class="text-preset3">test</span>
+                    </div>
+                    <div class="space-y-[24px]">
+                        <p class="text-preset6">Wind</p>
+                        <span class="text-preset3">test</span>
+                    </div>
+                    <div class="space-y-[24px]">
+                        <p class="text-preset6">Precipitation</p>
+                        <span class="text-preset3">test</span>
+                    </div>
+                </div>
+            </div>
+            <div class="self-start">
+                <h3 class="text-preset5 mb-[20px]">Daily forecast</h3>
+                <div class="text-center grid grid-cols-3 md:grid-cols-7 gap-[24px] *:bg-[#262540] *:p-[20px] *:rounded-[20px]">
+                    <div>
+                        Tue
+                        <img src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <div class="flex justify-between">
+                            <span class="text-preset7">20</span>
+                            <span class="text-preset7">14</span>
+                        </div>
+                    </div>
+                    <div>
+                        Tue
+                        <img src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <div class="flex justify-between">
+                            <span class="text-preset7">20</span>
+                            <span class="text-preset7">14</span>
+                        </div>
+                    </div>
+                    <div>
+                        Tue
+                        <img src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <div class="flex justify-between">
+                            <span class="text-preset7">20</span>
+                            <span class="text-preset7">14</span>
+                        </div>
+                    </div>
+                    <div>
+                        Tue
+                        <img src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <div class="flex justify-between">
+                            <span class="text-preset7">20</span>
+                            <span class="text-preset7">14</span>
+                        </div>
+                    </div>
+                    <div>
+                        Tue
+                        <img src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <div class="flex justify-between">
+                            <span class="text-preset7">20</span>
+                            <span class="text-preset7">14</span>
+                        </div>
+                    </div>
+                    <div>
+                        Tue
+                        <img src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <div class="flex justify-between">
+                            <span class="text-preset7">20</span>
+                            <span class="text-preset7">14</span>
+                        </div>
+                    </div>
+                    <div>
+                        Tue
+                        <img src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <div class="flex justify-between">
+                            <span class="text-preset7">20</span>
+                            <span class="text-preset7">14</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-[20px] bg-[#262540] p-[20px] space-y-[16px]">
+            <div class="flex items-center justify-between">
+                <h3 class="text-preset5">Hourly forecast</h3>
+                <div class="bg-[#3C3B5E] rounded-md py-2 px-4 flex items-center justify-between gap-2">
+                    <span class="text-preset7">Day</span>
+                    <img src="{{ url_for('static', filename='./images/icon-dropdown.svg')}}" alt="day">
+                </div>
+            </div>
+            <div class="grid grid-cols-1 grid-rows-8 gap-[16px] *:bg-[#302F4A] *:w-full *:rounded-[8px] *:p-[10px]">
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-row items-center justify-between">
+                        <img class="w-[40px]" src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <span class="text-preset5-med">3 PM</span>
+                    </div>
+                    <span class="text-preset7">20</span>
+                </div>
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-row items-center justify-between">
+                        <img class="w-[40px]" src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <span class="text-preset5-med">3 PM</span>
+                    </div>
+                    <span class="text-preset7">20</span>
+                </div>
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-row items-center justify-between">
+                        <img class="w-[40px]" src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <span class="text-preset5-med">3 PM</span>
+                    </div>
+                    <span class="text-preset7">20</span>
+                </div>
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-row items-center justify-between">
+                        <img class="w-[40px]" src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <span class="text-preset5-med">3 PM</span>
+                    </div>
+                    <span class="text-preset7">20</span>
+                </div>
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-row items-center justify-between">
+                        <img class="w-[40px]" src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <span class="text-preset5-med">3 PM</span>
+                    </div>
+                    <span class="text-preset7">20</span>
+                </div>
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-row items-center justify-between">
+                        <img class="w-[40px]" src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <span class="text-preset5-med">3 PM</span>
+                    </div>
+                    <span class="text-preset7">20</span>
+                </div>
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-row items-center justify-between">
+                        <img class="w-[40px]" src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <span class="text-preset5-med">3 PM</span>
+                    </div>
+                    <span class="text-preset7">20</span>
+                </div>
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-row items-center justify-between">
+                        <img class="w-[40px]" src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
+                        <span class="text-preset5-med">3 PM</span>
+                    </div>
+                    <span class="text-preset7">20</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}s

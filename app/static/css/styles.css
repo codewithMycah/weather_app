@@ -1,0 +1,104 @@
+@font-face {
+    font-family: 'BricolageGrotesque';
+    src: url('../fonts/Bricolage_Grotesque/BricolageGrotesque-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: DMSans;
+    src: url('../fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf');
+    font-weight: 300 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: DMSans-Italic;
+    src: url('../fonts/DM_Sans/DMSans-Italic-VariableFont_opsz\,wght.ttf');
+    font-weight: 300 700;
+    font-style: italic;
+}
+
+.font-bricolagegrotesque {
+    font-family: 'BricolageGrotesque', sans-serif;
+}
+
+.font-dmsans {
+    font-family: 'DMSans', sans-serif;
+}
+
+.font-dmsans-italic {
+    font-family: 'DMSans-Italic', sans-serif;
+}
+
+.text-preset1 {
+    font-family: 'DMSans-Italic', sans-serif;
+    font-weight: 600;
+    font-size: 96px;
+    line-height: 100%;
+    letter-spacing: -2px;
+}
+
+.text-preset2 {
+    font-family: 'BricolageGrotesque', sans-serif;
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 120%;
+    letter-spacing: 0;
+}
+
+.text-preset3 {
+    font-family: 'DMSans', sans-serif;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 0;
+}
+
+.text-preset4 {
+    font-family: 'DMSans', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 120%;
+    letter-spacing: 0;
+}
+
+.text-preset5 {
+    font-family: 'DMSans', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0;
+}
+
+.text-preset5-med {
+    font-family: 'DMSans', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0;
+}
+
+.text-preset6 {
+    font-family: 'DMSans', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: 0;
+}
+
+.text-preset7 {
+    font-family: 'DMSans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0;
+}
+
+.text-preset8 {
+    font-family: 'DMSans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: 0;
+}
