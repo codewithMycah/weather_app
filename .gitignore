@@ -208,3 +208,5 @@ __marimo__/
 
 weather-app
 weather-app-main
+
+.cache.sqlite

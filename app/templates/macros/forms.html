@@ -1,26 +1,28 @@
 {% macro search_input() %}
 <div class="flex flex-col items-center justify-center">
-    <form class="grid grid-cols-1 gap-[12px] md:grid-cols-[4fr_1fr] lg:max-w-[656px] items-center justify-center mx-auto md:space-x-[16px]">   
-        <label for="simple-search" class="sr-only">Search</label>
+    <form action="{{ url_for('home')}}" method="post" class="grid grid-cols-1 gap-[12px] md:grid-cols-[4fr_1fr] lg:max-w-[656px] items-center justify-center mx-auto md:space-x-[16px]">   
+        <label for="city_name" class="sr-only">Search</label>
         <div class="relative">
             <div class="relative mb-[8px]">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none">
                     <img src="{{ url_for('static', filename='./images/icon-search.svg') }}" alt="">
                 </div>
-                <input type="text" id="simple-search" class="w-full bg-[#262540] text-preset5-med rounded-lg focus:ring-blue-500 focus:border-blue-500 ps-12 px-[24px] py-[16px]" placeholder="Search for a place..." required />
+                <input type="text" id="city_name" name="city_name" class="w-full bg-[#262540] text-preset5-med rounded-lg focus:ring-blue-500 focus:border-blue-500 ps-12 px-[24px] py-[16px]" placeholder="Search for a place..." required />
             </div>
 
             <!-- Search related -->
-            <div class="absolute top-full left-0 w-full shadow-lg z-50 md:max-w-[656px] px-[8px] py-[6px] text-white origin-top-right rounded-[12px] bg-[#262540] outline-1 -outline-offset-1 outline-white/10 transition transition-discrete">
-                {% for i in range(4) %}
-                    <a href="#" class="block text-start text-preset7 px-[8px] py-[10px] space-y-[10px] hover:rounded-[8px] hover:bg-[#302F4A]">City Name</a>
+             {% if results and results['results'] %}
+                {% for result in results['results'] %}
+                    <div class="absolute top-full left-0 w-full shadow-lg z-50 md:max-w-[656px] px-[8px] py-[6px] text-white origin-top-right rounded-[12px] bg-[#262540] outline-1 -outline-offset-1 outline-white/10 transition transition-discrete">        
+                        <a href="#" class="block text-start text-preset7 px-[8px] py-[10px] space-y-[10px] hover:rounded-[8px] hover:bg-[#302F4A]">{{ result['name'] }}</a>         
+                    </div>
                 {% endfor %}
-            </div>
+            {% endif %}
         </div>
         
         <button type="submit" class="px-[24px] py-[16px] text-sm bg-[#4658D9] rounded-[12px] cursor-pointer hover:bg-[#4658D9] hover:outline-2 hover:outline-offset-2 hover:outline-[#4658D9] focus:bg-[#4658D9]">
             <span class="text-preset5-med">Search</span>
         </button>
     </form>
-    </div>
+</div>
 {% endmacro %}

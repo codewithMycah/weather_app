@@ -4,11 +4,30 @@
 
 {% block content %}
 <div class="text-center space-y-[24px]">
-    <h3 class="text-preset2">How’s the sky looking today?</h3>
+    <h3 class="text-preset2 mx-[48px] md:m-[64px]">How’s the sky looking today?</h3>
 
     <!-- Search Bar -->
     <div>
-        {{ search_input() }}
+        <div class="flex flex-col items-center justify-center">
+            <form action="{{ url_for('home')}}" method="post" class="grid grid-cols-1 w-full lg:w-auto gap-[12px] md:grid-cols-[4fr_1fr] lg:max-w-[656px] items-center justify-center mx-auto md:space-x-[16px]">   
+                <label for="city_name" class="sr-only">Search</label>
+                <div class="relative">
+
+                    <div class="flex items-center bg-[#262540] text-[#D4D3D9] rounded-lg text-preset5-med  pl-3 outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-600 dark:bg-white/5 dark:outline-gray-600 dark:has-[input:focus-within]:outline-indigo-500">
+                        <div class="shrink-0 select-none ps-2"><img src="{{ url_for('static', filename='./images/icon-search.svg') }}" alt=""></div>
+                        <input type="text" id="city_name" name="city_name" placeholder="Search for a place..." class="block min-w-0 grow py-1.5 pr-3 pl-1 ps-12 pl-[12px] py-[16px] focus:outline-none" />
+                        <button id="clearBtn" onclick="clearSearch()" class="grid shrink-0 grid-cols-1 focus-within:relative text-preset6 pe-4">x</button>
+                    </div>
+
+                    <!-- Search related -->
+                    <div id="results" class="hidden mt-[8px] absolute top-full left-0 w-full shadow-lg z-50 md:max-w-[656px] px-[8px] py-[6px] text-white origin-top-right rounded-[12px] bg-[#262540] outline-1 -outline-offset-1 outline-white/10 transition transition-discrete"></div>
+                </div>
+                
+                <button type="submit" class="px-[24px] py-[16px] text-sm bg-[#4658D9] rounded-[12px] cursor-pointer hover:bg-[#4658D9] hover:outline-2 hover:outline-offset-2 hover:outline-[#4658D9] focus:bg-[#4658D9]">
+                    <span class="text-preset5-med">Search</span>
+                </button>
+            </form>
+        </div>
     </div>
     
     <div class="text-start grid grid-cols-1 lg:grid-cols-[2fr_1fr] grid-rows-1 gap-[32px]">
@@ -51,10 +70,10 @@
             <!-- Daily Forecast -->
             <div class="self-start">
                 <h3 class="text-preset5 mb-[20px]">Daily forecast</h3>
-                <div class="text-center grid grid-cols-3 md:grid-cols-7 gap-[24px] *:bg-[#262540] *:p-[20px] *:rounded-[20px]">
+                <div class="text-center grid grid-cols-3 md:grid-cols-7 gap-[16px] *:bg-[#262540] *:px-[10px] *:py-[16px] *:rounded-[20px]">
                     {% for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
                     <div>
-                        {{ day[:3] }}
+                        <span class="text-preset6">{{ day[:3] }}</span>
                         <img src="{{ url_for('static', filename='./images/icon-drizzle.webp') }}" alt="">
                         <div class="flex justify-between">
                             <span class="text-preset7">20</span>
@@ -97,4 +116,60 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+    const cityName = document.getElementById("city_name");
+    const resultsDiv = document.getElementById("results");
+    const clearBtn = document.getElementById("clearBtn");
+
+    function toggleClearBtn() {
+        clearBtn.classList.toggle("hidden");
+    }
+
+    function clearSearch() {
+        toggleClearBtn();
+        cityName.value = "";
+        cityName.focus();
+    }
+
+    cityName.addEventListener("input", async () => {
+        const query = cityName.value;
+        if (query.length === 0) {
+            resultsDiv.classList.toggle("hidden");
+            resultsDiv.innerHTML = "";
+            return;
+        }
+
+        const response = await fetch(`/search?q=${query}`);
+
+        if (response) {
+            const results = await response.json();
+            console.log(results)
+            resultsDiv.classList.toggle("hidden");
+            
+            resultsDiv.innerHTML = "";
+            
+            if (results['results']) {
+                results['results'].forEach(item => {
+                    const anchor = document.createElement("div");
+                    anchor.textContent = item['name'];
+                    anchor.className = "block text-start text-preset7 px-[8px] py-[10px] space-y-[10px] hover:rounded-[8px] hover:bg-[#302F4A]";
+                    anchor.addEventListener('click', () => {
+                        cityName.value = item['name'];
+                        resultsDiv.innerHTML = ''; // Hide suggestions after selection
+                        resultsDiv.classList.toggle("hidden");
+                    });
+                    resultsDiv.appendChild(anchor);
+                })
+            }
+        }
+        else {
+            console.log('No results found.')
+        }
+
+    });
+</script>
 {% endblock %}

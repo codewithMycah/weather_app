@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center text-center space-y-[24px]">
+    <img class="w-[42px]" src="{{ url_for('static', filename='./images/icon-error.svg')}}" alt="units">
+    <h3 class="text-preset2">404</h3>
+    <p class="md:max-w-[554px] text-neutral-200 text-preset5-med">The page you are looking for cannot be found.</p>
+    <a href="" class="bg-[#262540] rounded-md py-[12px] px-[16px]">Home</a>
+</div>
+{% endblock %}s
